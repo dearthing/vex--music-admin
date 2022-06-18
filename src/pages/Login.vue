@@ -52,6 +52,7 @@ export default {
     const store = useStore();
     const onSubmit = (username,password) => {
       store.dispatch('user/login',{username,password}).then(()=>{
+        store.dispatch('user/fetchCurrentUser');
         router.push({ path: route.query.redirect || '/' });
       })
     }

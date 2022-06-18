@@ -1,5 +1,11 @@
 <template>
-  <div>欢迎 {{nickname}}</div>
+  <q-img
+      src="https://cdn.quasar.dev/img/parallax1.jpg"
+      style="height: 100px"
+  ></q-img>
+
+
+  <q-btn @click="logout">注销</q-btn>
 </template>
 
 <script>
@@ -12,6 +18,7 @@ export default {
     const store = useStore();
     return {
       nickname: computed(() => store.state.user.nickname),
+      logout: () => store.dispatch('user/logout').then(()=>{window.location.reload()})
     }
   }
 }
